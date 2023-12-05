@@ -125,7 +125,7 @@ public class ApiTrackReportsService {
     }
 
     private Map<String, List<String>> getCarrierCodeAndShipperCodes() {
-        try {
+
             List<IntegrationConfigs> integrationConfigs = integrationConfigsRepository.findAll().stream().toList();
             List<IntegrationConfigs> filteredList = integrationConfigs.stream()
                     .filter(config -> config.getCarrierEDICode() != null).toList();
@@ -139,9 +139,6 @@ public class ApiTrackReportsService {
                 keyValueMap.put(entry.getKey(), shipperCodes);
             }
             return keyValueMap;
-        } catch (Exception e) {
-            LOGGER.info(String.valueOf(e));
-            return null;
-        }
+
     }
 }
